@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46831e0f-6365-4352-9e21-e20319fbc657" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ICommande.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ICommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Translation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Translation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Postion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/SnapShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/SnapShot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,17 +18,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2jnHgdHIG9Vsx0kklaljLPHFJdy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,24 +36,26 @@
     "Maven.app [package].executor": "Run",
     "Maven.app [validate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/TP5-equipe1-log121",
+    "last_opened_file_path": "C:/Users/samue/Desktop/TP5-equipe1-log121",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="ImageApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lab5team1.app.ImageApp" />
-      <module name="app" />
+      <module name="TP5-equipe1-log121" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lab5team1.app.*" />
@@ -77,14 +72,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -94,7 +81,6 @@
       <option name="presentableId" value="Default" />
       <updated>1722016032382</updated>
       <workItem from="1722016033428" duration="464000" />
-      <workItem from="1722016534375" duration="3831000" />
     </task>
     <servers />
   </component>
