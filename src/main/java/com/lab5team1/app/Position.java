@@ -4,11 +4,13 @@ public class Position {
     private int xPos;
     private int yPos;
     private float zoomValue;
+    private OperationTab tab;
 
-    public Position(int xPos, int yPos, float zoomValue) {
+    public Position(int xPos, int yPos, float zoomValue, OperationTab tab) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.zoomValue = zoomValue;
+        this.tab = tab;
     }
 
     public int getXPos() {
