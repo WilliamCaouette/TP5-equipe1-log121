@@ -4,9 +4,17 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.w3c.dom.html.HTMLObjectElement;
 
+import java.io.File;
+
 public class ToolBar {
+    private Stage primaryStage;
+
+    public ToolBar(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
 
     public HBox buildToolBar(){
         HBox toolbar = new HBox();
@@ -16,7 +24,7 @@ public class ToolBar {
             fileChooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
             );
-            /*File selectedFile = fileChooser.showOpenDialog(primaryStage);*/
+            File selectedFile = fileChooser.showOpenDialog(primaryStage);
         });
         toolbar.getChildren().add(loadButton);
 

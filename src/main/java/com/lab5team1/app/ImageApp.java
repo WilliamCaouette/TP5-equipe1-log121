@@ -19,7 +19,7 @@ public class ImageApp extends Application {
         primaryStage.setTitle("Image Loader");
 
 
-        Scene scene = new Scene(new GlobalView().buildView(), 800, 500);
+        Scene scene = new Scene(new GlobalView(primaryStage).buildView(), 800, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

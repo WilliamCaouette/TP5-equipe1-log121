@@ -2,12 +2,17 @@ package com.lab5team1.app;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class GlobalView{
     private Tab staticTab = new StaticTab();
     private Tab OperationTab1 = new OperationTab();
     private Tab OperationTab2 = new OperationTab();
-    private ToolBar toolBar = new ToolBar();
+    private ToolBar toolBar;
+
+    public GlobalView(Stage primaryStage){
+        toolBar = new ToolBar(primaryStage);
+    }
 
     public VBox buildView(){
         VBox root = new VBox();

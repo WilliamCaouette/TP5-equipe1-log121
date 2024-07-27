@@ -6,12 +6,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.VBox;
 
 public class OperationTab extends Tab{
     ScrollPane scrollPane;
     Position position = new Position(0d, 0d, 1f, this);
-
+    private double lastMouseX;
+    private double lastMouseY;
+    private double scaleValue = 1.0;
+    private final double zoomFactor = 0.1;
 
     @Override
     public VBox  buildTable() {
@@ -24,35 +28,63 @@ public class OperationTab extends Tab{
         }
         vbox.getChildren().add(imageView);
         vbox.maxWidth(300);
-        // Create a ScrollPane and put the VBox inside it
-        ScrollPane scrollPane = new ScrollPane(vbox);
+        scrollPane = new ScrollPane(vbox);
+        // Masquer les barres de défilement
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        scrollPane.hvalueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                position.setXPos((Double) newValue);
+        // Ajouter des gestionnaires d'événements pour le drag
+        vbox.setOnMousePressed(this::handleMousePressed);
+        vbox.setOnMouseDragged(event -> handleMouseDragged(event, scrollPane));
+
+        // Ajouter un EventHandler pour gérer le zoom
+        scrollPane.addEventFilter(ScrollEvent.SCROLL, event -> {
+            if (event.getDeltaY() != 0) {
+                zoomImage(imageView, event);
             }
         });
 
-        scrollPane.vvalueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                position.setYPos((Double) newValue);
-            }
-        });
 
-        // Set the preferred size of the ScrollPane
         scrollPane.setPrefSize(500, 500);
-        scrollPane.setOnMouseClicked(event -> handleMouseClick(event));
+
         // Disable scrolling
         scrollPane.setPannable(false);
         root.getChildren().add(scrollPane);
         return root;
     }
 
-    private void handleMouseClick(MouseEvent event) {
-        this.position.setZoom(this.position.getZoom()+0.1f);
-        imageView.setScaleX(this.position.getZoom());
-        imageView.setScaleY(this.position.getZoom());
+    private void handleMousePressed(MouseEvent event) {
+        System.out.println("here");
+        lastMouseX = event.getSceneX();
+        lastMouseY = event.getSceneY();
+    }
+
+    private void handleMouseDragged(MouseEvent event, ScrollPane scrollPane) {
+        double deltaX = event.getSceneX() - lastMouseX;
+        double deltaY = event.getSceneY() - lastMouseY;
+
+        double newHValue = scrollPane.getHvalue() - deltaX / scrollPane.getContent().getBoundsInLocal().getWidth();
+        double newVValue = scrollPane.getVvalue() - deltaY / scrollPane.getContent().getBoundsInLocal().getHeight();
+
+        scrollPane.setHvalue(clamp(newHValue, 0, 1));
+        scrollPane.setVvalue(clamp(newVValue, 0, 1));
+
+        lastMouseX = event.getSceneX();
+        lastMouseY = event.getSceneY();
+    }
+
+    private double clamp(double value, double min, double max) {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
+    }
+
+    private void zoomImage(ImageView imageView, ScrollEvent event) {
+        double delta = event.getDeltaY() > 0 ? zoomFactor : -zoomFactor;
+        scaleValue += delta;
+        scaleValue = clamp(scaleValue, 0.1, 10);
+        imageView.setScaleX(scaleValue);
+        imageView.setScaleY(scaleValue);
+        event.consume();
     }
 }
