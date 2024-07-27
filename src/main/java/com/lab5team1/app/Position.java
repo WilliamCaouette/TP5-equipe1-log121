@@ -1,32 +1,34 @@
 package com.lab5team1.app;
 
 public class Position {
-    private int xPos;
-    private int yPos;
+    private double xPos;
+    private double yPos;
     private float zoomValue;
     private OperationTab tab;
 
-    public Position(int xPos, int yPos, float zoomValue, OperationTab tab) {
+    public Position(double xPos, double yPos, float zoomValue, OperationTab tab) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.zoomValue = zoomValue;
         this.tab = tab;
     }
 
-    public int getXPos() {
+    public Double getXPos() {
         return xPos;
     }
 
-    public void setXPos(int xPos) {
+    public void setXPos(Double xPos) {
         this.xPos = xPos;
+        System.out.println(this.toString());
     }
 
-    public int getYPos() {
+    public Double getYPos() {
         return yPos;
     }
 
-    public void setYPos(int yPos) {
+    public void setYPos(Double yPos) {
         this.yPos = yPos;
+        System.out.println(this.toString());
     }
 
     public float getZoom() {
@@ -35,7 +37,13 @@ public class Position {
 
     public void setZoom(float zoomValue) {
         this.zoomValue = zoomValue;
+        System.out.println(this.toString());
     }
+
+    public Position clone(){
+        return new Position(xPos, yPos,zoomValue,tab);
+    }
+
 
     @Override
     public String toString() {
