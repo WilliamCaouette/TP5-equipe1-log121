@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46831e0f-6365-4352-9e21-e20319fbc657" name="Changes" comment="Ajouts de la fonctionnalitée zoom au clique et ajout des évènements de scroll pour le déplacement verticale et horizontal &#10;&#10;connexion entre les tabs position et snapshots">
+    <list default="true" id="46831e0f-6365-4352-9e21-e20319fbc657" name="Changes" comment="changements des controles sur les images&#10;&#10;Ajout de la fonctionnalité du zoom sur l'image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ImageApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ImageApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/OperationTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/OperationTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ToolBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ToolBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Position.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722108867769</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="changements des controles sur les images&#10;&#10;Ajout de la fonctionnalité du zoom sur l'image">
+      <option name="closed" value="true" />
+      <created>1722112615912</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1722112615912</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajouts de la fonctionnalitée zoom au clique et ajout des évènements de scroll pour le déplacement verticale et horizontal &#10;&#10;connexion entre les tabs position et snapshots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajouts de la fonctionnalitée zoom au clique et ajout des évènements de scroll pour le déplacement verticale et horizontal &#10;&#10;connexion entre les tabs position et snapshots" />
+    <MESSAGE value="changements des controles sur les images&#10;&#10;Ajout de la fonctionnalité du zoom sur l'image" />
+    <option name="LAST_COMMIT_MESSAGE" value="changements des controles sur les images&#10;&#10;Ajout de la fonctionnalité du zoom sur l'image" />
   </component>
 </project>

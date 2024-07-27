@@ -3,10 +3,10 @@ package com.lab5team1.app;
 public class Position {
     private double xPos;
     private double yPos;
-    private float zoomValue;
+    private double zoomValue;
     private OperationTab tab;
 
-    public Position(double xPos, double yPos, float zoomValue, OperationTab tab) {
+    public Position(double xPos, double yPos, double zoomValue, OperationTab tab) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.zoomValue = zoomValue;
@@ -31,11 +31,11 @@ public class Position {
         System.out.println(this.toString());
     }
 
-    public float getZoom() {
+    public double getZoom() {
         return zoomValue;
     }
 
-    public void setZoom(float zoomValue) {
+    public void setZoom(double zoomValue) {
         this.zoomValue = zoomValue;
         System.out.println(this.toString());
     }

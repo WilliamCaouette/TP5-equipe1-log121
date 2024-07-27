@@ -71,6 +71,10 @@ public class OperationTab extends Tab{
 
         lastMouseX = event.getSceneX();
         lastMouseY = event.getSceneY();
+
+        this.position.setXPos(scrollPane.getHvalue());
+        this.position.setYPos(scrollPane.getVvalue());
+
     }
 
     private double clamp(double value, double min, double max) {
@@ -86,5 +90,6 @@ public class OperationTab extends Tab{
         imageView.setScaleX(scaleValue);
         imageView.setScaleY(scaleValue);
         event.consume();
+        this.position.setZoom(scaleValue);
     }
 }
