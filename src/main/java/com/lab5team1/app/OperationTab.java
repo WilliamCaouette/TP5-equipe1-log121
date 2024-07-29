@@ -17,6 +17,7 @@ public class OperationTab extends Tab{
     private double scaleValue = 1.0;
     private final double zoomFactor = 0.1;
 
+
     @Override
     public VBox  buildTable() {
         VBox root = new VBox();
@@ -40,7 +41,15 @@ public class OperationTab extends Tab{
         // Ajouter un EventHandler pour gérer le zoom
         scrollPane.addEventFilter(ScrollEvent.SCROLL, event -> {
             if (event.getDeltaY() != 0) {
-                zoomImage(imageView, event);
+                double delta = event.getDeltaY() > 0 ? zoomFactor : -zoomFactor;
+                double deltaX = event.getSceneX() - lastMouseX;
+                double deltaY = event.getSceneY() - lastMouseY;
+                // Si ça fonctionne, possiblement mettre imageView et event dans Position,
+                // ou trouver meilleur moyen de transferer ça
+                Position position1 = new Position(deltaX, deltaY, delta, this);
+                ChangePosition changePosition = new ChangePosition(position1, event, imageView);
+                changePosition.execute();
+                //zoomImage(imageView, event);
             }
         });
 
