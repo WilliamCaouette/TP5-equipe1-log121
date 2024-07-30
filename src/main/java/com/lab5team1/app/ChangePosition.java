@@ -17,10 +17,4 @@ public class ChangePosition extends ICommand {
         // cal delta
         receiver.setPosition(position);
     }
-
-    private double clamp(double value, double min, double max) {
-        if (value < min) return min;
-        if (value > max) return max;
-        return value;
-    }
 }

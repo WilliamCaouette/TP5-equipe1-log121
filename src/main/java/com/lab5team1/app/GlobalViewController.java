@@ -28,8 +28,6 @@ public class GlobalViewController {
     public void setPosition(Position pos) {
         // creer snapshot
         model.setPositionTab1(pos);
-        // Au lieu de send event et imageview, ça serait update model que lui va retourner a operationTab faire event/img change
-        //this.position.setZoom(scaleValue);
     }
 
     public void setZoom(float zoom) {

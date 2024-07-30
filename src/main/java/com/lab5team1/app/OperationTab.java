@@ -45,8 +45,6 @@ public class OperationTab extends Tab{
                 double delta = event.getDeltaY() > 0 ? zoomFactor : -zoomFactor;
                 double deltaX = event.getSceneX() - lastMouseX;
                 double deltaY = event.getSceneY() - lastMouseY;
-                // Si ça fonctionne, possiblement mettre imageView et event dans Position,
-                // ou trouver meilleur moyen de transferer ça
                 Position position1 = new Position(deltaX, deltaY, delta, this);
                 ChangePosition changePosition = new ChangePosition(position1);
                 changePosition.execute();
