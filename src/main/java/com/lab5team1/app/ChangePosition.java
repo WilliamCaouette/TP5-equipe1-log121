@@ -14,7 +14,7 @@ public class ChangePosition extends ICommand {
 
     @Override
     void execute() {
-        // cal delta
+        // comment faire la différence ici pour le tab
         receiver.setPosition(position);
     }
 }

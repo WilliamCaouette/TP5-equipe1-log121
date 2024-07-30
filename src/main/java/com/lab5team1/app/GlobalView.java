@@ -32,7 +32,9 @@ public class GlobalView implements Observer{
 
     @Override
     public void getNotify(Subject context) {
-        // ici renvoyer à la tab pour qu'il change la position
         controller.getOperationTab1().updateView(model.getPositionTab1());
+        // petit bug quand il y en a deux ça shoot un erreur prob parce qu'il voit pas la
+        // différence entre les deux
+        //controller.getOperationTab2().updateView(model.getPositionTab2());
     }
 }

@@ -70,33 +70,40 @@ public class OperationTab extends Tab{
     private void handleMouseDragged(MouseEvent event, ScrollPane scrollPane) {
         double deltaX = event.getSceneX() - lastMouseX;
         double deltaY = event.getSceneY() - lastMouseY;
+        double delta = event.getSceneY() > 0 ? zoomFactor : -zoomFactor;
 
         double newHValue = scrollPane.getHvalue() - deltaX / scrollPane.getContent().getBoundsInLocal().getWidth();
         double newVValue = scrollPane.getVvalue() - deltaY / scrollPane.getContent().getBoundsInLocal().getHeight();
 
-        scrollPane.setHvalue(clamp(newHValue, 0, 1));
-        scrollPane.setVvalue(clamp(newVValue, 0, 1));
+        Position position1 = new Position(newHValue, newVValue, 0, this);
+        ChangePosition changePosition = new ChangePosition(position1);
+        changePosition.execute();
 
         lastMouseX = event.getSceneX();
         lastMouseY = event.getSceneY();
-
-        this.position.setXPos(scrollPane.getHvalue());
-        this.position.setYPos(scrollPane.getVvalue());
-
     }
 
     private double clamp(double value, double min, double max) {
         if (value < min) return min;
-        if (value > max) return max;
-        return value;
+        return Math.min(value, max);
     }
 
     public void updateView(Position pos) {
-        double delta = pos.getYPos() > 0 ? zoomFactor : -zoomFactor;
-        scaleValue += delta;
-        scaleValue = clamp(scaleValue, 0.1, 10);
-        imageView.setScaleX(scaleValue);
-        imageView.setScaleY(scaleValue);
-        this.position.setZoom(scaleValue);
+        if (pos.getZoom() != 0) {
+            double delta = pos.getYPos() > 0 ? zoomFactor : -zoomFactor;
+            scaleValue += delta;
+            scaleValue = clamp(scaleValue, 0.1, 10);
+            imageView.setScaleX(scaleValue);
+            imageView.setScaleY(scaleValue);
+            this.position.setZoom(scaleValue);
+        }
+        else {
+            scrollPane.setHvalue(clamp(pos.getXPos(), 0, 1));
+            scrollPane.setVvalue(clamp(pos.getYPos(), 0, 1));
+
+            this.position.setXPos(scrollPane.getHvalue());
+            this.position.setYPos(scrollPane.getVvalue());
+        }
+
     }
 }
