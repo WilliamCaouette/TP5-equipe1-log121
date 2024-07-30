@@ -9,9 +9,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ChangePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ChangePosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/GlobalViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ICommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ImageApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ImageApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ImageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/ImageModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/OperationTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/OperationTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Tab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lab5team1/app/Tab.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,31 +37,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ImageApp.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.app [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.app [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.app [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.app [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.app [validate].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/willi/OneDrive/Bureau/TP5_equipe1/TP5-equipe1-log121&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ImageApp.executor": "Run",
+    "Maven.app [clean].executor": "Run",
+    "Maven.app [compile].executor": "Run",
+    "Maven.app [install].executor": "Run",
+    "Maven.app [package].executor": "Run",
+    "Maven.app [validate].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/financej-team07",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="ImageApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lab5team1.app.ImageApp" />
@@ -82,6 +82,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -91,6 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722016032382</updated>
       <workItem from="1722016033428" duration="464000" />
+      <workItem from="1722257002639" duration="11786000" />
     </task>
     <task id="LOCAL-00001" summary="Ajouts de la fonctionnalitée zoom au clique et ajout des évènements de scroll pour le déplacement verticale et horizontal &#10;&#10;connexion entre les tabs position et snapshots">
       <option name="closed" value="true" />

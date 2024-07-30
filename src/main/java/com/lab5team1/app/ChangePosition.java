@@ -6,18 +6,21 @@ import javafx.scene.input.ScrollEvent;
 
 public class ChangePosition extends ICommand {
     private Position position;
-    private ScrollEvent scrollEvent;
-    private ImageView iView;
 
-    public ChangePosition(Position pos, ScrollEvent event, ImageView imageView)
+    public ChangePosition(Position pos)
     {
         position = pos;
-        scrollEvent = event;
-        iView = imageView;
     }
 
     @Override
     void execute() {
-        receiver.setPosition(position, scrollEvent, iView);
+        // cal delta
+        receiver.setPosition(position);
+    }
+
+    private double clamp(double value, double min, double max) {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
     }
 }

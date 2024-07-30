@@ -18,6 +18,7 @@ public class OperationTab extends Tab{
     private final double zoomFactor = 0.1;
 
 
+
     @Override
     public VBox  buildTable() {
         VBox root = new VBox();
@@ -47,9 +48,9 @@ public class OperationTab extends Tab{
                 // Si ça fonctionne, possiblement mettre imageView et event dans Position,
                 // ou trouver meilleur moyen de transferer ça
                 Position position1 = new Position(deltaX, deltaY, delta, this);
-                ChangePosition changePosition = new ChangePosition(position1, event, imageView);
+                ChangePosition changePosition = new ChangePosition(position1);
                 changePosition.execute();
-                //zoomImage(imageView, event);
+                event.consume();
             }
         });
 
@@ -92,13 +93,12 @@ public class OperationTab extends Tab{
         return value;
     }
 
-    private void zoomImage(ImageView imageView, ScrollEvent event) {
-        double delta = event.getDeltaY() > 0 ? zoomFactor : -zoomFactor;
+    public void updateView(Position pos) {
+        double delta = pos.getYPos() > 0 ? zoomFactor : -zoomFactor;
         scaleValue += delta;
         scaleValue = clamp(scaleValue, 0.1, 10);
         imageView.setScaleX(scaleValue);
         imageView.setScaleY(scaleValue);
-        event.consume();
         this.position.setZoom(scaleValue);
     }
 }

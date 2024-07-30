@@ -17,5 +17,4 @@ public abstract class Tab {
     }
 
     public abstract VBox buildTable();
-
 }

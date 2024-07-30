@@ -8,16 +8,12 @@ public class GlobalViewController {
     private static GlobalViewController instance;
 
     private Tab staticTab = new StaticTab();
-    private Tab OperationTab1 = new OperationTab();
-    private Tab OperationTab2 = new OperationTab();
+    private OperationTab OperationTab1 = new OperationTab();
+    private OperationTab OperationTab2 = new OperationTab();
     private ToolBar toolBar;
 
     Position position = new Position(0d, 0d, 1.0, (OperationTab) OperationTab1);
-
-    private double lastMouseX;
-    private double lastMouseY;
-    private double scaleValue = 1.0;
-    private final double zoomFactor = 0.1;
+    private ImageModel model = new ImageModel();
 
     private GlobalViewController() {
     }
@@ -29,16 +25,11 @@ public class GlobalViewController {
         return instance;
     }
 
-    public void setPosition(Position pos, ScrollEvent event, ImageView imageView) {
+    public void setPosition(Position pos) {
         // creer snapshot
-        // i guess qu'ici ça serait de faire ce que le tab fait avec l'imageView, plus update le model
-        double delta = pos.getYPos() > 0 ? zoomFactor : -zoomFactor;
-        scaleValue += delta;
-        scaleValue = clamp(scaleValue, 0.1, 10);
-        imageView.setScaleX(scaleValue);
-        imageView.setScaleY(scaleValue);
-        event.consume();
-        this.position.setZoom(scaleValue);
+        model.setPositionTab1(pos);
+        // Au lieu de send event et imageview, ça serait update model que lui va retourner a operationTab faire event/img change
+        //this.position.setZoom(scaleValue);
     }
 
     public void setZoom(float zoom) {
@@ -59,11 +50,11 @@ public class GlobalViewController {
         return staticTab;
     }
 
-    public Tab getOperationTab1() {
+    public OperationTab getOperationTab1() {
         return OperationTab1;
     }
 
-    public Tab getOperationTab2() {
+    public OperationTab getOperationTab2() {
         return OperationTab2;
     }
 
@@ -75,9 +66,7 @@ public class GlobalViewController {
         this.toolBar = new ToolBar(stage);
     }
 
-    private double clamp(double value, double min, double max) {
-        if (value < min) return min;
-        if (value > max) return max;
-        return value;
+    public ImageModel getModel() {
+        return model;
     }
 }
