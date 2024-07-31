@@ -2,7 +2,10 @@ package com.lab5team1.app;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.*;
 
 public class GlobalViewController {
     private static GlobalViewController instance;
@@ -10,7 +13,8 @@ public class GlobalViewController {
     private Tab staticTab = new StaticTab();
     private OperationTab OperationTab1 = new OperationTab();
     private OperationTab OperationTab2 = new OperationTab();
-    private ToolBar toolBar;
+    private ToolBar toolBar = new ToolBar();
+    private Stage primaryStage;
 
     Position position = new Position(0d, 0d, 1.0, (OperationTab) OperationTab1);
     private ImageModel model = new ImageModel();
@@ -26,23 +30,71 @@ public class GlobalViewController {
     }
 
     public void setPosition(Position pos) {
-        // creer snapshot
-        model.setPositionTab1(pos);
-    }
+        if(pos != null){
+            // creer snapshot
+            if(pos.getTab() == OperationTab1)
+                model.setPositionTab1(pos);
 
-    public void setZoom(float zoom) {
+            else if(pos.getTab() == OperationTab2)
+                model.setPositionTab2(pos);
+        }
     }
 
     public void undoEvent() {
+        // TERRMINER LA MISE EN PLACE DU SAVE
     }
 
-    public void saveSnapShot(Position position) {
-    }
 
     public void save(ImageModel model) {
+        // Configure FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Serialized Object");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized Files", "*.ser"));
+
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(primaryStage);
+        if (file != null) {
+            try (FileOutputStream fileOut = new FileOutputStream(file);
+                 ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+                out.writeObject(model);
+                System.out.println("Serialized data is saved in " + file.getAbsolutePath());
+            } catch (IOException i) {
+                i.printStackTrace();
+            }
+        }
+
     }
 
-    public void load() {}
+    public void openFile(){
+        // Configure FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Serialized Object");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized Files", "*.ser"));
+
+        // Show open file dialog
+        File file = fileChooser.showOpenDialog(primaryStage);
+        if (file != null) {
+            try (FileInputStream fileIn = new FileInputStream(file);
+                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                ImageModel model = (ImageModel) in.readObject();
+                System.out.println("Deserialized model...");
+                this.model.setVersion(model);
+            } catch (IOException | ClassNotFoundException i) {
+                i.printStackTrace();
+            }
+        }
+    }
+
+    public void load() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        if (selectedFile != null) {
+            model.setImageURL(selectedFile.toURI().toString());
+        }
+    }
 
     public Tab getStaticTab() {
         return staticTab;
@@ -60,11 +112,12 @@ public class GlobalViewController {
         return toolBar;
     }
 
-    public void setToolBar(Stage stage) {
-        this.toolBar = new ToolBar(stage);
-    }
 
     public ImageModel getModel() {
         return model;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }

@@ -17,8 +17,8 @@ public class ImageApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Image Loader");
-
-        Scene scene = new Scene(new GlobalView(primaryStage).buildView(), 800, 500);
+        GlobalViewController.getInstance().setPrimaryStage(primaryStage);
+        Scene scene = new Scene(new GlobalView().buildView(), 800, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

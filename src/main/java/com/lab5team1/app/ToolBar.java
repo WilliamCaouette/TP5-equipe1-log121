@@ -12,34 +12,37 @@ import java.io.File;
 public class ToolBar {
     private Stage primaryStage;
 
-    public ToolBar(Stage primaryStage){
-        this.primaryStage = primaryStage;
+    public ToolBar(){
+
     }
 
     public HBox buildToolBar(){
         HBox toolbar = new HBox();
         Button loadButton = new Button("Load Image");
         loadButton.setOnAction(e -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
-            );
-            File selectedFile = fileChooser.showOpenDialog(primaryStage);
+            GlobalViewController.getInstance().load();
         });
         toolbar.getChildren().add(loadButton);
 
         Button undoButton = new Button("Undo");
         undoButton.setOnAction(e -> {
-
+            GlobalViewController.getInstance().undoEvent();
         });
 
         toolbar.getChildren().add(undoButton);
 
         Button saveButton = new Button("Save");
-        loadButton.setOnAction(e -> {
-
+        saveButton.setOnAction(e -> {
+            GlobalViewController.getInstance().save(GlobalViewController.getInstance().getModel());
         });
         toolbar.getChildren().add(saveButton);
+
+        Button openButton = new Button("Open File");
+        openButton.setOnAction(e -> {
+            GlobalViewController.getInstance().openFile();
+        });
+        toolbar.getChildren().add(openButton);
+
         return toolbar;
     }
 }

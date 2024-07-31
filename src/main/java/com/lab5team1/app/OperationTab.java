@@ -9,14 +9,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.VBox;
 
-public class OperationTab extends Tab{
+import java.io.Serializable;
+
+public class OperationTab extends Tab implements Serializable {
     ScrollPane scrollPane;
-    Position position = new Position(0d, 0d, 1f, this);
+    Position position;
     private double lastMouseX;
     private double lastMouseY;
-    private double scaleValue = 1.0;
-    private final double zoomFactor = 0.1;
 
+    public OperationTab(){
+        position = new Position(0d, 0d, 1f, this);
+    }
 
 
     @Override
@@ -37,19 +40,12 @@ public class OperationTab extends Tab{
 
         // Ajouter des gestionnaires d'événements pour le drag
         vbox.setOnMousePressed(this::handleMousePressed);
+        vbox.setOnMouseReleased(this::handleMouseReleased);
         vbox.setOnMouseDragged(event -> handleMouseDragged(event, scrollPane));
 
         // Ajouter un EventHandler pour gérer le zoom
         scrollPane.addEventFilter(ScrollEvent.SCROLL, event -> {
-            if (event.getDeltaY() != 0) {
-                double delta = event.getDeltaY() > 0 ? zoomFactor : -zoomFactor;
-                double deltaX = event.getSceneX() - lastMouseX;
-                double deltaY = event.getSceneY() - lastMouseY;
-                Position position1 = new Position(deltaX, deltaY, delta, this);
-                ChangePosition changePosition = new ChangePosition(position1);
-                changePosition.execute();
-                event.consume();
-            }
+            zoomImage(event);
         });
 
 
@@ -61,42 +57,35 @@ public class OperationTab extends Tab{
         return root;
     }
 
+    private void handleMouseReleased(MouseEvent mouseEvent) {
+       CommandHistory.getInstance().push(position.save());
+    }
+
     private void handleMousePressed(MouseEvent event) {
-        System.out.println("here");
         lastMouseX = event.getSceneX();
         lastMouseY = event.getSceneY();
     }
 
     private void handleMouseDragged(MouseEvent event, ScrollPane scrollPane) {
-        double deltaX = event.getSceneX() - lastMouseX;
-        double deltaY = event.getSceneY() - lastMouseY;
-
-        double newHValue = scrollPane.getHvalue() - deltaX / scrollPane.getContent().getBoundsInLocal().getWidth();
-        double newVValue = scrollPane.getVvalue() - deltaY / scrollPane.getContent().getBoundsInLocal().getHeight();
-
-        scrollPane.setHvalue(clamp(newHValue, 0, 1));
-        scrollPane.setVvalue(clamp(newVValue, 0, 1));
-
+        new ChangePosition(this.position, event.getSceneX() - lastMouseX, event.getSceneY() - lastMouseY, scrollPane.getContent().getBoundsInLocal().getWidth(), scrollPane.getContent().getBoundsInLocal().getHeight());
         lastMouseX = event.getSceneX();
         lastMouseY = event.getSceneY();
 
-        this.position.setXPos(scrollPane.getHvalue());
-        this.position.setYPos(scrollPane.getVvalue());
-
     }
 
-    private double clamp(double value, double min, double max) {
-        if (value < min) return min;
-        if (value > max) return max;
-        return value;
-    }
 
     public void updateView(Position pos) {
-        double delta = pos.getYPos() > 0 ? zoomFactor : -zoomFactor;
-        scaleValue += delta;
-        scaleValue = clamp(scaleValue, 0.1, 10);
-        imageView.setScaleX(scaleValue);
-        imageView.setScaleY(scaleValue);
-        this.position.setZoom(scaleValue);
+        if(pos != null){
+            scrollPane.setHvalue(pos.getXPos());
+            scrollPane.setVvalue(pos.getYPos());
+            imageView.setScaleX(pos.getZoom());
+            imageView.setScaleY(pos.getZoom());
+        }
+
+    }
+
+    private void zoomImage(ScrollEvent event) {
+        new Zoom(this.position, event.getDeltaY());
+        event.consume();
     }
 }

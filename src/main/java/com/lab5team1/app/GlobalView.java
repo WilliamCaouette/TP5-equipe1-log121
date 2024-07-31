@@ -8,8 +8,7 @@ public class GlobalView implements Observer{
     GlobalViewController controller = GlobalViewController.getInstance();
     private ImageModel model = GlobalViewController.getInstance().getModel();
 
-    public GlobalView(Stage primaryStage){
-        controller.setToolBar(primaryStage);
+    public GlobalView(){
     }
 
     public VBox buildView(){
@@ -17,9 +16,6 @@ public class GlobalView implements Observer{
         root.setSpacing(10);
         HBox tabsContainer = new HBox();
         model.subscribe(this);
-        controller.getStaticTab().setImageURL("https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg");
-        controller.getOperationTab1().setImageURL("https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg");
-        controller.getOperationTab2().setImageURL("https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg");
         tabsContainer.getChildren().addAll(controller.getStaticTab().buildTable(),
                 controller.getOperationTab1().buildTable(),
                 controller.getOperationTab2().buildTable());
@@ -29,10 +25,18 @@ public class GlobalView implements Observer{
         return root;
     }
 
+    public void updateImageSource(String url){
+        controller.getStaticTab().setImageURL(url);
+        controller.getOperationTab1().setImageURL(url);
+        controller.getOperationTab2().setImageURL(url);
+    }
+
 
     @Override
     public void getNotify(Subject context) {
         // ici renvoyer à la tab pour qu'il change la position
         controller.getOperationTab1().updateView(model.getPositionTab1());
+        controller.getOperationTab2().updateView(model.getPositionTab2());
+        updateImageSource(model.getImageURL());
     }
 }

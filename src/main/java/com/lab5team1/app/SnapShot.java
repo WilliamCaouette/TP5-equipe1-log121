@@ -1,17 +1,14 @@
 package com.lab5team1.app;
 
 public class SnapShot {
-    private Position screensPositions;
+    private Position screenPosition;
 
-    public SnapShot(Position screensPositions) {
-        this.screensPositions = screensPositions;
+    public SnapShot(Position screenPosition) {
+        this.screenPosition = screenPosition;
     }
 
-    public Position getScreensPositions() {
-        return screensPositions;
-    }
 
     public Position getScreenPosition() {
-        return screensPositions;
+        return screenPosition;
     }
 }

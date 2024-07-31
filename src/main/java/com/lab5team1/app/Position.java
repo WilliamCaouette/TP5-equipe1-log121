@@ -1,10 +1,12 @@
 package com.lab5team1.app;
 
-public class Position {
+import java.io.Serializable;
+
+public class Position implements Serializable {
     private double xPos;
     private double yPos;
     private double zoomValue;
-    private OperationTab tab;
+    private transient OperationTab tab;
 
     public Position(double xPos, double yPos, double zoomValue, OperationTab tab) {
         this.xPos = xPos;
@@ -19,7 +21,7 @@ public class Position {
 
     public void setXPos(Double xPos) {
         this.xPos = xPos;
-        System.out.println(this.toString());
+        //System.out.println(this.toString());
     }
 
     public Double getYPos() {
@@ -28,7 +30,7 @@ public class Position {
 
     public void setYPos(Double yPos) {
         this.yPos = yPos;
-        System.out.println(this.toString());
+        //System.out.println(this.toString());
     }
 
     public double getZoom() {
@@ -37,11 +39,23 @@ public class Position {
 
     public void setZoom(double zoomValue) {
         this.zoomValue = zoomValue;
-        System.out.println(this.toString());
+        //System.out.println(this.toString());
     }
 
     public Position clone(){
         return new Position(xPos, yPos,zoomValue,tab);
+    }
+
+    public Tab getTab(){
+        return this.tab;
+    }
+
+    public SnapShot save(){
+        return new SnapShot(this);
+    }
+
+    public void restore(SnapShot snapShot){
+
     }
 
 

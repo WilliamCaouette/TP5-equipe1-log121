@@ -21,10 +21,13 @@ public class CommandHistory {
     public void clearRedoHistory() {
         redoHistory.clear();
     }
+    public void clearHistory() {
+        history.clear();
+    }
 
     public SnapShot pop() {
         if (!history.isEmpty()) {
-            SnapShot snapshot = history.remove(0);
+            SnapShot snapshot = history.remove(history.size()-1);
             redoHistory.add(snapshot);
             return snapshot;
         }
@@ -33,6 +36,9 @@ public class CommandHistory {
 
     public void push(SnapShot snapshot) {
         history.add(snapshot);
+        cropListToLength();
+        clearRedoHistory();
+        System.out.println(history.toString());
     }
 
     private void cropListToLength() {
