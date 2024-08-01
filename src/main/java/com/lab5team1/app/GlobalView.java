@@ -2,7 +2,6 @@ package com.lab5team1.app;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class GlobalView implements Observer{
     GlobalViewController controller = GlobalViewController.getInstance();
@@ -16,9 +15,9 @@ public class GlobalView implements Observer{
         root.setSpacing(10);
         HBox tabsContainer = new HBox();
         model.subscribe(this);
-        tabsContainer.getChildren().addAll(controller.getStaticTab().buildTable(),
-                controller.getOperationTab1().buildTable(),
-                controller.getOperationTab2().buildTable());
+        tabsContainer.getChildren().addAll(controller.getStaticTab().buildTab(),
+                controller.getOperationTab1().buildTab(),
+                controller.getOperationTab2().buildTab());
         root.getChildren().addAll(controller.getToolBar().buildToolBar(), tabsContainer);
 
 

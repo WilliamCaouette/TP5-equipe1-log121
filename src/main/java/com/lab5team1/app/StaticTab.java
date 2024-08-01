@@ -13,7 +13,7 @@ public class StaticTab extends Tab {
 
 
     @Override
-    public VBox buildTable() {
+    public VBox buildTab() {
         VBox root = new VBox();
         imageView.setPreserveRatio(true);
         imageView.setFitWidth(200);

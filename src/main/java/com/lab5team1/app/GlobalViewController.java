@@ -1,7 +1,5 @@
 package com.lab5team1.app;
 
-import javafx.scene.image.ImageView;
-import javafx.scene.input.ScrollEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -46,23 +44,8 @@ public class GlobalViewController {
 
 
     public void save(ImageModel model) {
-        // Configure FileChooser
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Serialized Object");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized Files", "*.ser"));
-
-        // Show save file dialog
-        File file = fileChooser.showSaveDialog(primaryStage);
-        if (file != null) {
-            try (FileOutputStream fileOut = new FileOutputStream(file);
-                 ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-                out.writeObject(model);
-                System.out.println("Serialized data is saved in " + file.getAbsolutePath());
-            } catch (IOException i) {
-                i.printStackTrace();
-            }
-        }
-
+        Save save = new Save(model, primaryStage);
+        save.execute();
     }
 
     public void openFile(){

@@ -16,5 +16,5 @@ public abstract class Tab {
         imageView.setImage( new Image(this.imageURL));
     }
 
-    public abstract VBox buildTable();
+    public abstract VBox buildTab();
 }

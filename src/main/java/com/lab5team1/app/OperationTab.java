@@ -23,7 +23,7 @@ public class OperationTab extends Tab implements Serializable {
 
 
     @Override
-    public VBox  buildTable() {
+    public VBox buildTab() {
         VBox root = new VBox();
         VBox vbox = new VBox();
         imageView.setPreserveRatio(true);
