@@ -28,20 +28,34 @@ public class GlobalViewController {
     }
 
     public void setPosition(Position pos) {
-        if(pos != null){
+        if(pos != null) {
             // creer snapshot
-            if(pos.getTab() == OperationTab1)
+
+            if (pos.getTab() == OperationTab1){
                 model.setPositionTab1(pos);
 
-            else if(pos.getTab() == OperationTab2)
+
+            } else if(pos.getTab() == OperationTab2) {
                 model.setPositionTab2(pos);
+
+            }
+            model.notifyObservers();
+
         }
+
+
     }
 
     public void undoEvent() {
         // TERRMINER LA MISE EN PLACE DU SAVE
+        System.out.println("undo exec");
+        new Undo().execute();
     }
 
+    public void redoEvent() {
+        System.out.println("redo exec");
+        new Redo().execute();
+    }
 
     public void save(ImageModel model) {
         Save save = new Save(model, primaryStage);
