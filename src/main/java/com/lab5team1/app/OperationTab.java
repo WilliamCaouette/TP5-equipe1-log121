@@ -14,13 +14,25 @@ import javafx.util.Duration;
 
 import java.io.Serializable;
 
+/**
+ * The type Operation tab.
+ */
 public class OperationTab extends Tab implements Serializable {
+    /**
+     * The Scroll pane.
+     */
     ScrollPane scrollPane;
+    /**
+     * The Position.
+     */
     Position position;
     private double lastMouseX;
     private double lastMouseY;
     private Timeline zoomEndTimeline;
 
+    /**
+     * Instantiates a new Operation tab.
+     */
     public OperationTab(){
         position = new Position(0d, 0d, 1f, this);
     }
@@ -81,6 +93,11 @@ public class OperationTab extends Tab implements Serializable {
     }
 
 
+    /**
+     * Update view.
+     *
+     * @param pos the pos
+     */
     public void updateView(Position pos) {
         if(pos != null){
             scrollPane.setHvalue(pos.getXPos());

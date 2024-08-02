@@ -1,5 +1,8 @@
 package com.lab5team1.app;
 
+/**
+ * The type Redo.
+ */
 public class Redo extends ICommand{
     @Override
     void execute() {

@@ -8,10 +8,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+/**
+ * The type Save.
+ */
 public class Save extends ICommand{
     private ImageModel model;
     private Stage stage;
 
+    /**
+     * Instantiates a new Save.
+     *
+     * @param model the model
+     * @param stage the stage
+     */
     public Save(ImageModel model, Stage stage) {
         this.model = model;
         this.stage = stage;

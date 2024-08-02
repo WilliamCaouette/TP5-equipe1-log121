@@ -9,6 +9,9 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
+/**
+ * The type Static tab.
+ */
 public class StaticTab extends Tab {
 
 

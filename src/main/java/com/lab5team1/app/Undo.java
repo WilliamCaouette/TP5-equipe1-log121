@@ -1,5 +1,8 @@
 package com.lab5team1.app;
 
+/**
+ * The type Undo.
+ */
 public class Undo extends ICommand {
 
     @Override

@@ -9,13 +9,24 @@ import org.w3c.dom.html.HTMLObjectElement;
 
 import java.io.File;
 
+/**
+ * The type Tool bar.
+ */
 public class ToolBar {
     private Stage primaryStage;
 
+    /**
+     * Instantiates a new Tool bar.
+     */
     public ToolBar(){
 
     }
 
+    /**
+     * Build tool bar h box.
+     *
+     * @return the h box
+     */
     public HBox buildToolBar(){
         HBox toolbar = new HBox();
         Button loadButton = new Button("Load Image");

@@ -4,6 +4,9 @@ package com.lab5team1.app;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 
+/**
+ * The type Change position.
+ */
 public class ChangePosition extends ICommand {
     private Position position;
     private double deltaX;
@@ -12,6 +15,15 @@ public class ChangePosition extends ICommand {
     private double width;
 
 
+    /**
+     * Instantiates a new Change position.
+     *
+     * @param pos    the pos
+     * @param deltaX the delta x
+     * @param deltaY the delta y
+     * @param height the height
+     * @param width  the width
+     */
     public ChangePosition(Position pos,double deltaX, double deltaY, double height, double width){
         this.position = pos;
         this.deltaX = deltaX;

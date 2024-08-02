@@ -1,10 +1,19 @@
 package com.lab5team1.app;
 
+/**
+ * The type Zoom.
+ */
 public class Zoom extends ICommand {
     private Position position;
     private double deltaScroll;
     private final double zoomFactor = 0.1;
 
+    /**
+     * Instantiates a new Zoom.
+     *
+     * @param pos         the pos
+     * @param deltaScroll the delta scroll
+     */
     public Zoom(Position pos,double deltaScroll){
         this.deltaScroll = deltaScroll;
         this.position = pos;
