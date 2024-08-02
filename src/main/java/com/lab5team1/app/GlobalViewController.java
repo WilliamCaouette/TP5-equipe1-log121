@@ -40,6 +40,9 @@ public class GlobalViewController {
 
     public void undoEvent() {
         // TERMINER LA MISE EN PLACE DU SAVE
+        Undo undo = new Undo();
+        undo.execute();
+
     }
 
     public void redoEvent() {
