@@ -66,6 +66,9 @@ public class OperationTab extends Tab implements Serializable {
     }
 
     private void handleMousePressed(MouseEvent event) {
+        if (CommandHistory.getInstance().getHistory().size() == 0){
+            CommandHistory.getInstance().push(position.clone().save());
+        }
         lastMouseX = event.getSceneX();
         lastMouseY = event.getSceneY();
     }
@@ -92,6 +95,9 @@ public class OperationTab extends Tab implements Serializable {
     }
 
     private void zoomImage(ScrollEvent event) {
+        if (CommandHistory.getInstance().getHistory().size() == 0){
+            CommandHistory.getInstance().push(position.clone().save());
+        }
         new Zoom(this.position, event.getDeltaY());
         event.consume();
         if (zoomEndTimeline != null) {

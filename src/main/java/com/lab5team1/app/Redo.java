@@ -1,17 +1,16 @@
 package com.lab5team1.app;
 
-public class Undo extends ICommand {
-
+public class Redo extends ICommand{
     @Override
     void execute() {
-        System.out.println("Undo command executed");
+        System.out.println("Redo command executed");
         SnapShot snapshot = CommandHistory.getInstance().pop(this);
         if (snapshot != null) {
             Position pos = snapshot.getScreenPosition();
-            System.out.println("Undo: Restoring position to " + pos);
+            System.out.println("Redo: Restoring position to " + pos);
             GlobalViewController.getInstance().setPosition(pos);
-        }else {
-            System.out.println("Undo: No snapshot found");
+        } else {
+            System.out.println("Redo: No snapshot found");
         }
     }
 }

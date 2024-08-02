@@ -2,12 +2,13 @@ package com.lab5team1.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class CommandHistory {
     private int HISTORY_MAX_SIZE = 10;
     private static CommandHistory instance;
-    private List<SnapShot> history = new ArrayList<>();
-    private List<SnapShot> redoHistory = new ArrayList<>();
+    private Stack<SnapShot> history = new Stack<>();
+    private Stack<SnapShot> redoHistory = new Stack<>();
 
     private CommandHistory() {}
 
@@ -25,18 +26,22 @@ public class CommandHistory {
         history.clear();
     }
 
-    public SnapShot pop() {
-        if (!history.isEmpty()) {
-            SnapShot snapshot = history.removeLast();
-            redoHistory.add(snapshot);
-            System.out.println(history.toString());
-            return snapshot;
+    public SnapShot pop(ICommand typeCommand) {
+        if (!history.isEmpty()&& typeCommand instanceof Undo) {
+            redoHistory.add(history.pop());
+            return this.getCurrentHistoryElement();
+        }
+        if (!redoHistory.isEmpty() && typeCommand instanceof Redo) {
+            history.add(redoHistory.pop());
+            return this.getCurrentHistoryElement();
         }
         return null; // Or throw an exception if preferred
     }
 
+
+
     public void push(SnapShot snapshot) {
-        history.add(snapshot);
+        history.push(snapshot);
         cropListToLength();
         clearRedoHistory();
         System.out.println(history.toString());
@@ -44,7 +49,7 @@ public class CommandHistory {
 
     private void cropListToLength() {
         while (history.size() > HISTORY_MAX_SIZE) {
-            history.removeLast();
+            history.remove(0);
         }
     }
 
