@@ -1,5 +1,7 @@
 package com.lab5team1.app;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ScrollPane;
@@ -8,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.Serializable;
 
@@ -16,6 +19,7 @@ public class OperationTab extends Tab implements Serializable {
     Position position;
     private double lastMouseX;
     private double lastMouseY;
+    private Timeline zoomEndTimeline;
 
     public OperationTab(){
         position = new Position(0d, 0d, 1f, this);
@@ -58,7 +62,7 @@ public class OperationTab extends Tab implements Serializable {
     }
 
     private void handleMouseReleased(MouseEvent mouseEvent) {
-       CommandHistory.getInstance().push(position.save());
+       CommandHistory.getInstance().push(position.clone().save());
     }
 
     private void handleMousePressed(MouseEvent event) {
@@ -80,6 +84,9 @@ public class OperationTab extends Tab implements Serializable {
             scrollPane.setVvalue(pos.getYPos());
             imageView.setScaleX(pos.getZoom());
             imageView.setScaleY(pos.getZoom());
+            position.setXPos(pos.getXPos());
+            position.setYPos(pos.getYPos());
+            position.setZoom(pos.getZoom());
         }
 
     }
@@ -87,5 +94,13 @@ public class OperationTab extends Tab implements Serializable {
     private void zoomImage(ScrollEvent event) {
         new Zoom(this.position, event.getDeltaY());
         event.consume();
+        if (zoomEndTimeline != null) {
+            zoomEndTimeline.stop();
+        }
+        zoomEndTimeline = new Timeline(new KeyFrame(Duration.millis(500), e -> {
+            CommandHistory.getInstance().push(position.clone().save());
+        }));
+        zoomEndTimeline.setCycleCount(1);
+        zoomEndTimeline.play();
     }
 }

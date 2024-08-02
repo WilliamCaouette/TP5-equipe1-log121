@@ -29,6 +29,11 @@ public class ToolBar {
             GlobalViewController.getInstance().undoEvent();
         });
 
+        Button redoButton = new Button("Redo");
+        redoButton.setOnAction(e -> {
+            GlobalViewController.getInstance().redoEvent();
+        });
+
         toolbar.getChildren().add(undoButton);
 
         Button saveButton = new Button("Save");

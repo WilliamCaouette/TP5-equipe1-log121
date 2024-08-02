@@ -39,7 +39,11 @@ public class GlobalViewController {
     }
 
     public void undoEvent() {
-        // TERRMINER LA MISE EN PLACE DU SAVE
+        // TERMINER LA MISE EN PLACE DU SAVE
+    }
+
+    public void redoEvent() {
+        // REDO
     }
 
 

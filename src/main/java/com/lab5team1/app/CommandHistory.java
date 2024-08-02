@@ -27,8 +27,9 @@ public class CommandHistory {
 
     public SnapShot pop() {
         if (!history.isEmpty()) {
-            SnapShot snapshot = history.remove(history.size()-1);
+            SnapShot snapshot = history.removeLast();
             redoHistory.add(snapshot);
+            System.out.println(history.toString());
             return snapshot;
         }
         return null; // Or throw an exception if preferred
@@ -43,7 +44,7 @@ public class CommandHistory {
 
     private void cropListToLength() {
         while (history.size() > HISTORY_MAX_SIZE) {
-            history.remove(0);
+            history.removeLast();
         }
     }
 
@@ -53,7 +54,7 @@ public class CommandHistory {
 
     public SnapShot getCurrentHistoryElement() {
         if (!history.isEmpty()) {
-            return history.get(0);
+            return history.getLast();
         }
         return null; // Or throw an exception if preferred
     }
