@@ -55,7 +55,6 @@ public class Position implements Serializable {
     }
 
     public void restore(SnapShot snapShot){
-
     }
 
 

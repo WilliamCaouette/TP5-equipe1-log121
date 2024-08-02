@@ -1,5 +1,6 @@
 package com.lab5team1.app;
 
+import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.stage.FileChooser;
@@ -41,7 +42,17 @@ public class GlobalViewController {
     }
 
     public void undoEvent() {
-        // TERRMINER LA MISE EN PLACE DU SAVE
+        CommandHistory.getInstance().pop();
+        if(CommandHistory.getInstance().getCurrentHistoryElement() != null){
+            Position currentPosition = CommandHistory.getInstance().getCurrentHistoryElement().getScreenPosition();
+            if(currentPosition.getTab() == OperationTab1){
+                model.setPositionTab1(currentPosition);
+            }
+            else if(currentPosition.getTab() == OperationTab2){
+                model.setPositionTab2(currentPosition);
+            }
+        }
+
     }
 
 

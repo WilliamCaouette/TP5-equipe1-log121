@@ -15,6 +15,7 @@ public class ImageModel extends Subject implements Serializable {
 
     public void setPositionTab1(Position positionTab1) {
         this.positionTab1 = positionTab1;
+        System.out.println(this.positionTab1.toString());
         notifyObservers();
     }
 
