@@ -40,7 +40,7 @@ public class Save extends ICommand{
             try (FileOutputStream fileOut = new FileOutputStream(file);
                  ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 out.writeObject(model);
-                System.out.println("Serialized data is saved in " + file.getAbsolutePath());
+                //System.out.println("Serialized data is saved in " + file.getAbsolutePath());
             } catch (IOException i) {
                 i.printStackTrace();
             }

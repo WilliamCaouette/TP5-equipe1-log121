@@ -57,7 +57,7 @@ public class GlobalViewController {
      * Undo event.
      */
     public void undoEvent() {
-        System.out.println("undo exec");
+        //System.out.println("undo exec");
         new Undo().execute();
     }
 
@@ -65,7 +65,7 @@ public class GlobalViewController {
      * Redo event.
      */
     public void redoEvent() {
-        System.out.println("redo exec");
+        //System.out.println("redo exec");
         new Redo().execute();
     }
 
@@ -94,7 +94,7 @@ public class GlobalViewController {
             try (FileInputStream fileIn = new FileInputStream(file);
                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 ImageModel model = (ImageModel) in.readObject();
-                System.out.println("Deserialized model...");
+                //System.out.println("Deserialized model...");
                 this.model.setVersion(model);
             } catch (IOException | ClassNotFoundException i) {
                 i.printStackTrace();

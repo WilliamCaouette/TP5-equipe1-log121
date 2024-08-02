@@ -69,9 +69,12 @@ public class CommandHistory {
         history.push(snapshot);
         cropListToLength();
         clearRedoHistory();
-        System.out.println(history.toString());
+        //System.out.println(history.toString());
     }
 
+    /**
+     * Makes sure that the stack does not have too much data
+     */
     private void cropListToLength() {
         while (history.size() > HISTORY_MAX_SIZE) {
             history.remove(0);
